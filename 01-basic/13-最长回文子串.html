@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //采用的是中间往两边扩散的方法
+        var isPalindrome = function(str) {
+            if(str < 2) return str;  //1.如果字符串长度小于2，直接返回
+            let start = 0; //2.定义两个变量，start储存当前找到最大子回文字符串的起始位置
+            let maxLength = 1; //记录字符串的长度，终止位置就是start+maxLength
+            function judge(left, right) { //创建一个函数
+                // 满足三个条件，左边界和右边界是否越界，左边字符串是否等于右边字符串
+                while(left >= 0 && right < str.length && str[left] === str[right]) {
+                    if(right - left + 1 > maxLength) { //判断是否需要更新start和maxLength
+                        maxLength = right - left + 1;
+                        start = left
+                    }
+                    left--;
+                    right++
+                }
+            }
+            for(let i = 0; i < str.length; i++) { //遍历字符串
+                judge(i-1, i+1); //当字符串为abcba类似情况，c为i
+                judge(i, i+1) //当字符串为abccba类似情况，第一个c为i
+            }
+            return str.substring(start, start+maxLength)
+        }
+        console.log(isPalindrome('sabbad'));
+    </script>
+</body>
+</html>
