@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //设计一个支持 push ，pop ，top ，getMin操作，并能在常数时间内检索到最小元素的栈
+        //思路：维护两个栈，一个栈存放全部的元素，另一个存放最小栈。
+        var MinStack = function() {
+            var stack = [];
+            var minStack = []
+        } 
+        MinStack.prototype.push = function(x) {
+            this.stack.push(x);
+            if(x <= this.minStack[this.minStack.length - 1] || this.minStack.length === 0) {
+                this.minStack.push(x)
+            }
+        }
+        MinStack.prototype.pop = function(x) {
+            let out = this.stack.pop(x);
+            if(this.minStack[this.minStack.length - 1] === out) {
+                this.minStack.pop(x)
+            }
+        }
+        MinStack.prototype.top = function(x) {
+            return this.stack[this.stack.length - 1]
+        }
+        MinStack.prototype.getMin = function() {
+            return this.minStack[this.minStack.length - 1]
+        }
+    </script>
+</body>
+</html>

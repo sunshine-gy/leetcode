@@ -9,6 +9,7 @@
 <body>
     <script>
         var sortedArrayToBST = function(nums) {
+            //平衡二叉树的意思是左右子树的长度相差不能超过 1
              // 由于数组是排序好的，因此一个思路就是将数组分成两半，一半是左子树，另一半是右子树
             // 然后运用“树的递归性质”递归完成操作即可。
             if(nums.length === 0) return null;

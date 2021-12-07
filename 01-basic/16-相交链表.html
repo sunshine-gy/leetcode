@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 哈希解法：
+      // 有 A, B 这两条链表, 先遍历其中一个，比如 A 链表, 并将 A 中的所有节点存入哈希表。
+      // 遍历 B 链表,检查节点是否在哈希表中, 第一个存在的就是相交节点
+      var together = function (A, B) {
+        let data = new Set();
+        while (A !== null) {
+          data.add(A);
+          A = A.next;
+        }
+        while (B !== null) {
+          if (data.has(B)) return B;
+          B = B.next;
+        }
+        return null;
+      };
+      let data = new Set();
+      console.log(data);
+    </script>
+  </body>
+</html>

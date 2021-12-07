@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //阶乘后返回尾数中零的个数，题解：关键是找到 n 中 5 的个数和 5 的倍数的个数
+        // 解法1.递归
+        var zeros1 = function(n) {
+            if(n === 0) return n;           
+            return Math.floor(n / 5) + zeros1(Math.floor(n / 5));
+        }
+        console.log(zeros1(15));
+        //解法2：迭代
+        var zeros2 = function(n) {
+            let count = 0;
+            while(n >= 5) {
+                count += Math.floor(n / 5);
+                n = Math.floor(n / 5)
+            }
+            return count
+        }
+        console.log(zeros2(15));
+
+        //验证
+        var recursive = function(n) {
+            if(n === 0 || n === 1) return 1;
+            return n * recursive(n-1)
+        }
+        console.log(recursive(15));
+    </script>
+</body>
+</html>
