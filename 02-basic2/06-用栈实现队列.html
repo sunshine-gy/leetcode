@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var MyQueue = function () {
+        this.stack1 = []; //一个为入栈
+        this.stack2 = [];//一个为出栈
+      };
+
+      MyQueue.prototype.push = function (x) {
+        this.stack1.push(x);
+      };
+
+      MyQueue.prototype.pop = function () {
+        const size = this.stack2.length;
+        if (size) {
+          return this.stack2.pop();
+        }
+        while (this.stack1.length) { //将入栈的元素放 (pop) 到出栈的元素里
+          this.stack2.push(this.stack1.pop());
+        }
+        return this.stack2.pop();
+      };
+
+      MyQueue.prototype.peek = function () {
+        const x = this.pop();
+        this.stack2.push(x); //因为 peek 是返回第一个元素，并不是删除故 pop 完需要再 push 进去
+        return x;
+      };
+
+      MyQueue.prototype.empty = function () {
+        return !this.stack1.length && !this.stack2.length;
+      };
+    </script>
+  </body>
+</html>

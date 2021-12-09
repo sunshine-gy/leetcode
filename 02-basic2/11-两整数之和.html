@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //不使用运算符 + 和 - ​​​​​​​，计算两整数 ​​​​​​​a 、b ​​​​​​​之和。
+        //只能运用位运算来求解了
+        //异或是一种不进位的加减法,求与之后左移一位来可以表示进位
+        var twoSum = function(a, b) {
+            if(a === 0) return b;
+            if(b === 0) return a;
+            return twoSum(a ^ b, (a & b) << 1)
+        }
+        console.log(twoSum(10,29));
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 常规做法
+        var together = function(arr1, arr2) {
+            let arr = [];
+            for(let i = 0; i < arr1.length; i++) {
+                if(arr2.includes(arr1[i])) {
+                    arr.push(arr1[i])
+                }
+            }
+            return new Set(arr)
+        }
+        console.log(together([1,2,3],[1,1,2]));
+
+        // 利用 hash 
+        var hash = function(arr1, arr2) {
+            let visit = {};
+            let ret = [];
+            for(let i = 0; i < arr1.length; i++) {
+                const num = arr1[i];
+                visit[num] = num
+            }
+            for(let i = 0; i < arr2.length; i++) {
+                const num = arr2[i];
+                if(visit[num] !== undefined) {
+                    ret.push(num);
+                    visit[num] = undefined //需清除掉已经 push 过的值，要不然 ret 中的元素会重复
+                }
+            }
+            return ret
+        }
+        console.log(hash([1,2,3],[1,1,2]));
+    </script>
+</body>
+</html>

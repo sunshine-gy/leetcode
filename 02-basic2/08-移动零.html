@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+        var moveZero = function(nums) {
+            let count = 0;
+            for(let i = 0; i < nums.length; i++) {
+                if(nums[i] === 0) {
+                    nums.splice(i, 1);
+                    count++;
+                    i--
+                }
+            }
+            for(let j = 0; j < count; j++) {
+                nums.push(0)
+            }
+            return nums
+        }
+        console.log(moveZero([0,0,1,2,0,3]));
+    </script>
+</body>
+</html>

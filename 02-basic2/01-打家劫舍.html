@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //题意：指能偷相邻之间除外的其他数值，找到偷到的最大值
+        //题解：利用动态规划
+        var rob = function(nums) {
+            let dp = [];
+            dp[0] = 0;
+            dp[1] = 0;
+            for(let i = 2; i < nums.length + 2; i++) {
+                //这里为了方便计算，令 dp[0]和 dp[1]都等于 0，所以 dp[i]对应的是 nums[i - 2]
+                dp[i] = Math.max(dp[i - 2] + nums[i - 2], dp[i - 1])
+            }
+            return dp[nums.length + 1]
+        }
+        console.log(rob([2,7,9,3,1]));
+    </script>
+</body>
+</html>
