@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //给定一个字符串 S 和一个字符 C。返回一个代表字符串 S 中每个字符到字符串 S 中的字符 C 的最短距离的数组。
+        var minDistrict = function(s, c) {
+            let res = [];
+            s = s.split('');
+            for(let i = 0; i < s.length; i++) {
+                let l =i; 
+                let r = i;
+                while(l > -1) {
+                    if(s[l] === c) {
+                        break;
+                    }
+                    l--
+                }
+                while(r < s.length){
+                    if(s[r] === c) {
+                        break
+                    };
+                    r++
+                }
+                res.push(Math.min(i - l, r - i))
+            }
+            return res
+        }    
+        console.log(minDistrict('abccb', 'b'));
+    </script>
+</body>
+</html>

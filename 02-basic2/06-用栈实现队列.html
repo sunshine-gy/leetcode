@@ -29,7 +29,7 @@
       };
 
       MyQueue.prototype.peek = function () {
-        const x = this.pop();
+        const x = this.pop(); // 复用 pop()
         this.stack2.push(x); //因为 peek 是返回第一个元素，并不是删除故 pop 完需要再 push 进去
         return x;
       };

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //解法 1：暴力解法，双层循环遍历，不停的更新最大值
+        var water = function(nums) {
+            let max = 0;
+            for(let i = 0; i < nums.length; i++) {
+                for(let j = i + 1; j < nums.length; j++) {
+                    let currentMax = Math.abs(i - j) * Math.min(nums[i], nums[j]);
+                    if(currentMax > max) {
+                        max = currentMax
+                    }
+                }
+            }
+            return max
+        }
+        console.log(water([1,8,6,2,5,4,8,3,7]));
+
+        // 解法 2：利用双指针，最大面积一定是当前的面积或者通过移动短的端点得到
+        // 因为只有长的点面积围成容器能够最大，且每次移动的形成的面积也要不停的更新
+        var water2 = function(height) {
+            if(!height || height.length <= 1) return 0;
+            let max = 0;
+            let left = 0;
+            let right = height.length - 1;
+            while(left < right) {
+                let currentMax = Math.abs(left - right) * Math.min(height[left], height[right]);
+                if(currentMax > max) {
+                    max = currentMax
+                }
+                if(height[left] < height[right]) { // 利用双指针移动短的点
+                    left++
+                } else{
+                    right--
+                }
+            }
+            return max
+        }
+        console.log(water2([1,8,6,2,5,4,8,3,7]));
+    </script>
+</body>
+</html>
