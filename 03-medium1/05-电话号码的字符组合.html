@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var complex = function(str) {
+            if(!str) return [];
+            let len = str.length;
+            let map = new Map(); // 利用 map 来储存数字到字母的映射关系
+            let res = [];
+            map.set("2", "abc");
+            map.set("3", "def");
+            map.set("4", "ghi");
+            map.set("5", "jkl");
+            map.set("6", "mno");
+            map.set("7", "pqrs");
+            map.set("8", "tuv");
+            map.set("9", "wxyz");
+            function generate(i, s) {
+                if(i == len) { // i 很关键，后面每次加 1 来获取下一个数字对应的字母
+                    res.push(s);
+                    return
+                }
+                const temp = map.get(str[i]); //获取下一个数字对应的字母
+                for(let j = 0; j < temp.length; j++) { // 遍历下一个数字所对应的所有映射的字母
+                    generate(i + 1, s + temp[j]) // 将当前的字母添加到组合最后，也就是 s + tmp[j]
+                }
+            }
+            generate(0, "");// 初始值给 0，用来获取 map 中的第一个数字对应的字母
+            return res
+        }
+        console.log(complex("23"));
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 题解: 双指针思想，快指针先移动 n 下，之后慢指针和快指针一起移动，则要删除的倒数 n 节点
+        // 则是慢指针指向的下一个节点，这个时候只要让慢指针指向下下个节点就好了
+        var remove = function(head, n) {
+            let dummy = new ListNode();
+            dummy.next = head; // 处理链表的常规操作，设置虚拟节点并指向 head
+            let fast = dummy; 
+            let slow = dummy; // 快慢指针指向虚拟节点
+            while(n--) fast = fast.next; // 快指针向右移动 n 下
+            if(!fast) return dummy.next; // 判断fast 是否有值
+            while(fast.next) { // 快慢指针一起移动
+                fast = fast.next;
+                slow = slow.next
+            }
+            slow.next = slow.next.next; // 慢指针指向下下个节点
+            return dummy.next
+        }
+    </script>
+</body>
+</html>

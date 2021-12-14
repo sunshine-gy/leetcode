@@ -9,6 +9,7 @@
 <body>
     <script>
         //给定一个字符串 S 和一个字符 C。返回一个代表字符串 S 中每个字符到字符串 S 中的字符 C 的最短距离的数组。
+        //利用双指针左右寻找目标字符，找到后取最小距离
         var minDistrict = function(s, c) {
             let res = [];
             s = s.split('');

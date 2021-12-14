@@ -11,7 +11,7 @@
         //删除链表中等于给定值 val 的所有节点。
         var removeElements = function(head, val) {
             let dummy = new ListNode(null);
-            dummy.next = head;
+            dummy.next = head; // 这两步是设置虚拟节点，简化操作，处理链表时常用
             let pre = dummy;
             while(pre.next !== null) {
                 if(pre.next.val === val) {
