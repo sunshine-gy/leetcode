@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var times = function (s1, s2) {
+        let count = 0;
+        let left = 0;
+        let right = s2.length - 1;
+        while (right < s1.length) {
+          temp = s1.substring(left, right + 1);
+          if (temp === s2) {
+            count++;
+            left = right + 1;
+            right += s2.length;
+          } else {
+            left++;
+            right++;
+          }
+        }
+        return count;
+      };
+      console.log(times('aaaa','aa'));
+    </script>
+  </body>
+</html>

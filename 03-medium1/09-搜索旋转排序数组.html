@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 采用二分法
+        const search = function(nums, target) {
+            if (!nums.length) return -1
+            let left = 0, right = nums.length - 1, mid
+            while (left <= right) {
+                mid = left + ((right - left) >> 1) // 先找中心点
+                if (nums[mid] === target) {
+                    return mid
+                }
+                if (nums[mid] >= nums[left]) { // 如果成立则代表 mid 左边是有序的
+                    if (target >= nums[left] && target < nums[mid]) { // 判断 target 是否在左边的区间
+                        right = mid - 1 // 在的话直接截掉 mid 右边的部分
+                    } else {
+                        left = mid + 1 // 否则截取 mid 左边的部分
+                    }
+                } else { // 否则 mid 右边是有序的
+                    if (target > nums[mid] && target <= nums[right]) { // 判断 target 是否在右边的区间
+                        left = mid + 1 // 在的话直接截掉 mid 左边的部分
+                    } else {
+                        right = mid - 1// 否则截取 mid 右边的部分
+                    }
+                }
+            }
+            return -1
+        }
+    </script>
+</body>
+</html>

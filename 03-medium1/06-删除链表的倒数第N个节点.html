@@ -16,8 +16,7 @@
             let fast = dummy; 
             let slow = dummy; // 快慢指针指向虚拟节点
             while(n--) fast = fast.next; // 快指针向右移动 n 下
-            if(!fast) return dummy.next; // 判断fast 是否有值
-            while(fast.next) { // 快慢指针一起移动
+            while(fast) { // 快慢指针一起移动
                 fast = fast.next;
                 slow = slow.next
             }
