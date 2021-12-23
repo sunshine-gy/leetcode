@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 题意： 一个人在 m × n 的网格中，从左上角走到右下角有多少种路径，每次只能走一格
+        //题解： 利用了排列组合，每次路劲走的总步数为 m + n - 2；向下走的步数为 m - 1；
+        // 故 Ck,N = N * (N - 1)*...(N - K + 1) / k!
+        var path = function(m, n) {
+            let k = m - 1; // 也可以写成 let k = n - 1;
+            let N = m + n -2;
+            let res = 1;
+            for(let i = 1; i <= k; i++) {
+                res = res * (N - k + i) / i // N * (N - 1)*...(N - K + 1) / k!
+            }
+            return res
+        }
+    </script>
+</body>
+</html>

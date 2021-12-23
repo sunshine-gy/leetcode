@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //题意： 给定 整数 n， 只能一楼或两楼的爬，算出有几种方式
+        var climb = function(n) {
+            let dp = [];
+            dp[0] = 1;
+            dp[1] = 1;
+            for(let i = 2; i <= n; i++) {
+                dp[i] = dp[i - 1] + dp[i - 2]; // 爬 n 阶楼梯的方法次数等于 n - 1 加上 n - 2 的总和
+            }
+            return dp[n]
+        }
+        console.log(climb(4));
+    </script>
+</body>
+</html>

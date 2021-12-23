@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        //给定一个非负整数数组 nums ，你最初位于数组的 第一个下标 。
+        // 数组中的每个元素代表你在该位置可以跳跃的最大长度。
+        // 判断你是否能够到达最后一个下标。
+      var climbGame = function (nums) {
+        let len = nums.length;
+        if (len == 1) return true;
+        let cover = 0;
+        for (let i = 0; i <= cover; i++) { 
+            // 因为cover第一次的数值指向的是 nums[0]；则代表可跳跃的范围能到 nums[0]
+          cover = Math.max(cover, i + nums[i]); // cover每次只取 max(cover本身范围,该元素数值补充后的范围)。
+          if (cover >= len - 1) return true;
+        }
+        return false;
+      };
+      console.log(climbGame([2, 3, 1, 1, 4]));
+    </script>
+  </body>
+</html>
