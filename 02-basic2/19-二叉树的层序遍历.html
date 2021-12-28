@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 题意： 将二叉树从左往右的遍历出来放在一个数组中， [[第一层]，[第二层]，[以此类推]]；
+        var levelOrder = function(root) {
+            let res = [];
+            let queue = [root];
+            if(root === null) return res;
+            while(queue.length !== 0) {
+                let len = queue.length;
+                let cur = [];
+                for(let i = 0; i < len; i++) { // 对每一层遍历
+                    let node = queue.shift(); // 将每一层的值取出来加入到cur中，这样就不会影响下一层了
+                    cur.push(node.val);
+                    node.left && queue.push(node.left); //这两步时判断每一层中的每个节点是否有值且是否有子节点
+                    node.right && queue.push(node.right)
+                }
+                res.push(cur)
+            }
+            return res
+        }
+    </script>
+</body>
+</html>
