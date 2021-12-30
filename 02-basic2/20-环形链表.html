@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 题意： 链表的尾部会指向前面的某个节点的值，形成环形
+        //解法1： Json.stringify() 因为该方法在对象出现循环引用的时候会报错
+        var hasCycle = function(head) {
+            try {
+                JSON.stringify(head)
+            } catch {
+                return true
+            }
+            return false
+        }
+        
+        //解法2： 遍历每个节点并打上标记，当遍历到标记的节点时则返回 true, 说明有环
+        var hasCycle2 = function(head) {
+            while(head) {
+                if(head.tag) return true;
+                head.tag = true;
+                head = head.next
+            }
+            return false
+        }
+    </script>
+</body>
+</html>

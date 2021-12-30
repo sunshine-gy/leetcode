@@ -12,6 +12,7 @@
         //输出：7 -> 0 -> 8
         //原因：342 + 465 = 807
         var addTwoNumbers = function(l1, l2) {
+          let addOne = 0;
           let sum = new ListNode('0') // 创建一个头链表用于保存结果
           let head = sum // 保存头链表的位置用于最后的链表返回
           while (addOne ||l1 || l2) {//在两个链表之中有一个存在的前提下执行下面的逻辑
