@@ -27,6 +27,23 @@
             return slowP + 1;
         }
         console.log(removeDuplicates([1,4,2,3,4,5,5,7,7,8,4]));
+
+        // 找出数组中重复的元素，利用hash
+        var test = function(nums) {
+            let res = [];
+            let visit = {};
+            let len = nums.length;
+            for(let i = 0 ; i < len; i++) {
+                if(visit[nums[i]] !== undefined) {
+                    res.push(nums[i])
+                }
+                visit[nums[i]] = nums[i];
+                console.log(visit);
+                            
+            }
+            return res
+        }
+        console.log(test([1,2,2,3,3,4]));
     </script>
 </body>
 </html>
