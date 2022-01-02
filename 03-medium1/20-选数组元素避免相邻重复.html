@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 题意： 选取数组元素避免相邻重复，即随机取数组元素避免连续两次取到同一元素
+        //题解： 先随机选取 n - 1 中的元素，然后再和第 n 个元素互换，这样就符合要求叾
+        // 但是这样第一次就取不到第 n 个元素，故利用高阶函数包装
+        var hoc = function(arr) {
+            arr = [...arr]; // copy 数组，以免修改原始数据
+            function randomPick() {
+                let len = arr.length - 1;
+                const index = Math.floor(len * Math.random()); // 随机取前 n - 1 个数据中的索引值
+                // const picked = arr[index];
+                [arr[index], arr[len]] = [arr[len], arr[index]]; // 随机数和第 n 个数据交换
+                return arr[index]
+            }
+            randomPick(); // 抛弃第一次选择的结果
+            return randomPick;
+        }
+        var test = hoc([1,2,3,4,5]);
+        console.log(test());
+        setInterval(() => {console.log(test())},1000);
+    </script>
+</body>
+</html>
