@@ -13,9 +13,9 @@
             let max = nums[0];
             let sum = 0;
             for(const num of nums) {
-                if(sum > 0) { // 如果当前的 sum 大于 0 的话，那么就与该遍历的数相加
+                if(sum > 0) {   // 如果当前的 sum 大于 0 的话，那么就与该遍历的数相加
                     sum += num
-                } else{ // 小于 0 的话，则就从该遍历的数重新开始，因为都是负数的话只会相加得更小
+                } else{        // 小于 0 的话，则就从该遍历的数重新开始，因为都是负数的话只会相加得更小
                     sum = num
                 }
                 max = Math.max(sum, max)

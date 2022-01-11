@@ -13,7 +13,7 @@
       var reverseBits = function (n) {
         let res = 0;
         for (let i = 0; i < 32; i++) {
-          res = (res << 1) + (n & 1);
+          res = (res << 1) + (n & 1); // 这一步是 接收的 res 左移动一位接收 n 过来的值
           n = n >>> 1; //这里本身就是二进制，故也可以写成 n >> 1
         }
 

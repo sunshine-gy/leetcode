@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 题意： 两数超过一定范围则计算机会失去精度
+      //题解： 转化为字符串相加
+      var twoNumber = function (str1, str2) {
+        str1 = str1.split("");
+        str2 = str2.split("");
+        let res = "";
+        let flag = 0;
+        while (str1.length || str2.length || flag) {
+          flag = flag + ~~str1.pop() + ~~str2.pop(); // 这里使用 ~按位取反运算符为了当flag存在时也能相加
+          res = (flag % 10) + res;
+          flag = flag > 9 ? 1 : 0;
+        }
+        return res;
+      };
+      console.log(
+        twoNumber(
+          "3333333333333333333333333333333333",
+          "3333333333333333333333333333333333"
+        )
+      );
+      console.log(~~undefined); // 0  按位取反运算符
+      console.log(!!undefined); // false  返回的是布尔值
+    </script>
+  </body>
+</html>

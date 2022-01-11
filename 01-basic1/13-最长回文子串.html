@@ -25,12 +25,12 @@
                 }
             }
             for(let i = 0; i < str.length; i++) { //遍历字符串
-                judge(i-1, i+1); //当字符串为abcba类似情况，c为i
-                judge(i, i+1) //当字符串为abccba类似情况，第一个c为i
+                judge(i - 1, i + 1); //当字符串为 abcba 类似情况，c 为 i
+                judge(i, i + 1) //当字符串为 abccba 类似情况，第一个 c 为 i 
             }
             return str.substring(start, start+maxLength)
         }
-        console.log(isPalindrome('sabbad'));
+        console.log(isPalindrome('abbadw'));
     </script>
 </body>
 </html>

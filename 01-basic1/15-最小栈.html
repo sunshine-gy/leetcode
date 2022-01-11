@@ -10,6 +10,7 @@
     <script>
         //设计一个支持 push ，pop ，top ，getMin操作，并能在常数时间内检索到最小元素的栈
         //思路：维护两个栈，一个栈存放全部的元素，另一个存放最小栈。
+        //简单来说就是： minStack 中放着的是最小的元素，但需要随着 Stack 的变化而变化
         var MinStack = function() {
             var stack = [];
             var minStack = []
