@@ -15,7 +15,7 @@
           let addOne = 0;
           let sum = new ListNode('0') // 创建一个头链表用于保存结果
           let head = sum // 保存头链表的位置用于最后的链表返回
-          while (addOne ||l1 || l2) {//在两个链表之中有一个存在的前提下执行下面的逻辑
+          while (addOne || l1 || l2) {//在两个链表之中有一个存在的前提下执行下面的逻辑
               let val1 = l1 !== null ? l1.val : 0 // 优化点,若其中一个链表的next为null时设置成 0
               let val2 = l2 !== null ? l2.val : 0 //优化点
               let r1 = val1 + val2 + addOne//求和

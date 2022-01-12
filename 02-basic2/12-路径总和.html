@@ -8,6 +8,8 @@
   </head>
   <body>
     <script>
+      //题意： 满足给定目标值的所有路径总和，起点可以是任何位置
+      //题解： 分为从根节点开始找满足目标值的路径，这里需要判断根节点是否等于目标值，然后再递归子树
       var pathSum = function (root, sum) {
         //root为根节点， sum为规定的路径权值和
         if (!root) return 0; //若节点为空，返回0

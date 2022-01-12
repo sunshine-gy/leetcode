@@ -16,8 +16,8 @@
         let res = "";
         let flag = 0;
         while (str1.length || str2.length || flag) {
-          flag = flag + ~~str1.pop() + ~~str2.pop(); // 这里使用 ~按位取反运算符为了当flag存在时也能相加
-          res = (flag % 10) + res;
+          flag = flag + ~~str1.pop() + ~~str2.pop(); // 这里使用 ~按位取反运算符为了只当flag存在时也能相加
+          res = (flag % 10) + res; // 这里加 res 是拼接的意思，因为 res 为字符串
           flag = flag > 9 ? 1 : 0;
         }
         return res;
