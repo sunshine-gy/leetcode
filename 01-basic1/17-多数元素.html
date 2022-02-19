@@ -14,6 +14,7 @@
             let map = new Map();
             for(let i = 0; i < nums.length; i++) {
                 let count = map.get(nums[i]);
+                console.log(count);
                 if(count) {
                     map.set(nums[i], count + 1)
                 } else {

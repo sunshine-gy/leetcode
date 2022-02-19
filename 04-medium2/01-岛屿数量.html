@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 题意： 给一个二维表格 -->
+    <!-- grid = [["1","1","1","1","0"],
+            ["1","1","0","1","0"],
+            ["1","1","0","0","0"],
+            ["0","0","0","0","0"]]，其中 1 代表陆地，0 代表水，被0包围的1则是一个岛屿，
+            并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。假设该网格的四条边均被水包围 -->
+    <!-- 题解： 1.遍历遇到 1 即遇到土地，土地肯定在一个岛上，计数 +1
+           2.将与遍历到的 1 相邻的 1 都变成 0，则DFS遍历到它们时，不会对一个岛重复计数 -->
+    <script>
+        var numIslands = function(grid) {
+            let count = 0;
+            for(let i = 0; i < grid.length; i++) {
+                for(let j = 0; j < grid[0].length; j++) {
+                    if(grid[i][j] === '1') {
+                        count++;
+                        dfs(i, j, grid)
+                    }
+                }
+            }
+            return count
+        }
+        function dfs(i, j, grid) {
+                //判断是否还在网格内,不在直接返回
+                if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) return
+                //当该陆地为 0 时，直接返回
+                if(grid[i][j] === '0') return
+                grid[i][j] = '0'; // 将 1 变成 0
+                // 将相邻的 1 都变成 0
+                dfs(i, j + 1, grid);
+                dfs(i, j - 1, grid);
+                dfs(i + 1, j, grid);
+                dfs(i - 1, j, grid);
+            }
+            console.log(numIslands([["1","1","1","1","0"],
+                                    ["1","1","0","1","0"],
+                                    ["1","1","0","0","0"],
+                                    ["0","0","0","0","0"]]));
+    </script>
+    
+</body>
+</html>

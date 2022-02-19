@@ -32,6 +32,11 @@
             return n * recursive(n-1)
         }
         console.log(recursive(15));
+
+        var test = function(n) {
+            if(n=== 0 ) return 0;
+            return Math.floor(n / 5) + test(Math.floor(n / 5))
+        }
     </script>
 </body>
 </html>
