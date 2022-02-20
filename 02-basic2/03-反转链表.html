@@ -16,8 +16,8 @@
                 //三个指针的操作
                 const temp = cur.next; //temp指针指向后续节点
                 cur.next = pre; //cur.next向左指向 pre
-                pre = cur;// pre向右指向cur
-                cur = temp //cur 向右指向temp
+                pre = cur;// pre指向cur位置
+                cur = temp //cur 向右移动
             }
             return pre
         }

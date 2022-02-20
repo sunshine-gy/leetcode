@@ -10,7 +10,7 @@
     <script>
         //给定一个整数 (32 位有符号整数)，请编写一个函数来判断它是否是 4 的幂次方。
         var four = function(n) {
-            while(n && n % 4 === 0){
+            while(n && n % 4 === 0){ // n 存在防止输入的 n 为 0
                 n = n / 4
             }
             return n === 1
