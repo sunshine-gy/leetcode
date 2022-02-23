@@ -8,30 +8,27 @@
 </head>
 <body>
     <script>
-        var is = function lengthOfLongestSubstring(s) {
+        // 题解： 相当于right指针在前面走，碰到有重复元素的话就不走了，让left指针来收缩左边边界，
+        // 直至删除重复元素后，right指针再继续走，注意其中需要更新right指针走的时候无重复元素的长度
+        var lengthOfLongestSubstring = function(s) {
             let len = s.length;
-            let result = 0;
-
+            let left = 0;   // 左指针
+            let right = 0;  //右指针
+            let maxLength = 0;
             let set = new Set();
-            // 左指针用来收缩窗口
-            let left = 0;
-            // 右指针用来扩张窗口
-            let right = 0;
-
-            while (left < len) {
-                // 如果不重复，就不断扩张窗口，元素添加到set中
-                while (right < len && !set.has(s[right])) {
-                set.add(s[right]);
-                right++;
+            while(right < len) {
+                if(!set.has(s[right])) {  // 当set中没有重复元素时
+                    set.add(s[right]);
+                    maxLength = Math.max(maxLength, right - left + 1);
+                    right++
+                } else {   // 到这说明有重复元素了
+                    set.delete(s[left]);  // 缩小边界，将会直至删除重复元素为止
+                    left++
                 }
-                // 到这里说明有元素重复了，先记录子串长度，然后收缩窗口
-                result = Math.max(result, right - left);
-                // 收缩窗口
-                set.delete(s[left]);
-                left++;
             }
-            return result;
-            }
+            return maxLength
+        }
+        console.log(lengthOfLongestSubstring('abcbd'));
     </script>
 </body>
 </html>

@@ -16,7 +16,7 @@
         for (let i = 0; i < str.length; i++){ //Sort忽略参数，按元素Unicode位点排序，即Unicode编码升序排列
           map.has((k = str[i].split("").sort().join(""))) ? map.get(k).push(str[i]): map.set(k, [str[i]]);
         }
-        console.log(map.values());
+        console.log(map);
         return Array.from(map.values());      
       };
       console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));

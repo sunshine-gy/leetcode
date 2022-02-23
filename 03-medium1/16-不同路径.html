@@ -12,8 +12,8 @@
         //题解： 利用了排列组合，每次路劲走的总步数为 m + n - 2；向下走的步数为 m - 1；
         // 故 Ck,N = N * (N - 1)*...(N - K + 1) / k!
         var path = function(m, n) {
-            let k = m - 1; // 也可以写成 let k = n - 1;
-            let N = m + n -2;
+            let k = m - 1; // 也可以写成 let k = n - 1; 向左或则向下走的步数
+            let N = m + n -2; // 因为无论怎么走都需要走 m + n - 2 步
             let res = 1;
             for(let i = 1; i <= k; i++) {
                 res = res * (N - k + i) / i // N * (N - 1)*...(N - K + 1) / k!

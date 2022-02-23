@@ -8,7 +8,8 @@
   </head>
   <body>
     <script>
-      // 题意：给你一个数组，里面都是不带重复的正数，再给定 target，求出所有和为 target 的组合。
+      // 题意：给你一个数组，里面都是不带重复的正数，再给定 target，元素可以重复，
+      // 组合不能重复，求出所有和为 target 的组合。
       const combinationSum = (candidates, target) => {
         const res = [];
         const dfs = (start, temp, sum) => {
