@@ -9,6 +9,7 @@
   <body>
     <script>
       var times = function (s1, s2) {
+        let temp;
         let count = 0;
         let left = 0;
         let right = s2.length - 1;
@@ -25,7 +26,7 @@
         }
         return count;
       };
-      console.log(times('aaaa','aa'));
+      console.log(times('abcdbcd','bcd'));
     </script>
   </body>
 </html>

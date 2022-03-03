@@ -29,7 +29,7 @@
             while((node = queue.shift()) !== undefined) {
                 if(node === null) {
                     // 注意⚠️： 不处理会无限循环，进而堆栈溢出
-                    if(queue.length === 0) return depth;
+                    if(queue.length === 0) return depth; //判断是否当前队列为空，如果不为空继续入队一个 null
                     depth++;
                     queue.push(null);
                     continue;
