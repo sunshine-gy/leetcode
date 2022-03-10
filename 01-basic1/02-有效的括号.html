@@ -16,6 +16,30 @@
             return s.length === 0;
         }
         console.log(isValid("[{()}]"));
+
+        var test = function(str) {
+            let stack = [];
+            for(let item of str) {
+                switch(item) {
+                    case '(':
+                    case '[':
+                    case '{':
+                        stack.push(item);
+                        break;
+                    case ')': 
+                        if(stack.pop() !== '(') return false;
+                        break;
+                    case ']':
+                        if(stack.pop() !== '[') return false;
+                        break;
+                    case '}':
+                        if(stack.pop() !== '{') return false;
+                        break
+                }
+            }
+            return !stack.length;
+        }
+        console.log(test("[{(abc)}]"));
     </script>
 </body>
 </html>
