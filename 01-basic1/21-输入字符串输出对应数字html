@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 题意： 输入 abbccccaaa 输出 a1b2c4a3
+        var test = function(str) {
+            let len = str.length;
+            let res = '';
+            let left = 0;
+            let right = 1;
+            while(left < len) {
+                if(str[left] === str[right]) {
+                    right++
+                }else {
+                    let temp = str.substring(left,right).length;
+                    res = res + str[left] + temp;
+                    left  = right
+                }
+            }
+            return res
+        }
+        console.log(test('abbccccaaa'));
+    </script>
+</body>
+</html>
