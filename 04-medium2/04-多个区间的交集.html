@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        // [5,2],[4,9],[3,6] => [4,5]
+      function testFn() {
+        if (!arguments.length) {
+          return null;
+        } //若无参数，直接返回null
+        // 只有1个成员的情形，仅判断2个数组成员是否不是数值
+        if (arguments.length === 1) {
+          if (
+            arguments[0][0].constructor !== Number ||
+            arguments[0][1].constructor !== Number
+          ) {
+            return null;
+          } else {
+            //若有数字，则返回当前数组
+            return arguments[0];
+          }
+        }
+
+        // 多个成员的情形
+        else if (arguments.length > 1) {
+          if (
+            arguments[0][0].constructor !== Number ||
+            arguments[0][1].constructor !== Number
+          ) {
+            return null;
+          }
+
+          let baseArr = [];
+          let arr1Min = Math.min(...arguments[0]);
+          let arr1Max = Math.max(...arguments[0]);
+          let count = arr1Min; //第一个数组中的最小值
+
+          while (count <= arr1Max) {
+            let flg = true;
+            for (let i = 1, len = arguments.length; i < len; i++) {
+              let child = arguments[i];
+              let min = Math.min(...child);
+              let max = Math.max(...child);
+              if (
+                child[0].constructor !== Number ||
+                child[1].constructor !== Number
+              ) {
+                return null;
+              }
+              if (count < min || count > max) {
+                flg = false;
+                break;
+              }
+            }
+            flg && baseArr.push(count);
+
+            count++;
+          }
+
+          return baseArr.length > 1
+            ? baseArr
+            : baseArr.length > 0
+            ? [baseArr[0], baseArr[0]]
+            : null;
+        }
+      }
+    </script>
+  </body>
+</html>

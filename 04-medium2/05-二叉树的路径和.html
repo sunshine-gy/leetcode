@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 求是否存在一条路径从根节点到子叶节点的的路径和等于目标值
+      var test = function (root, sum) {
+        if (!root) return null;
+        if (root.left == null && root.right == null) { // 
+          return sum - root.val == 0;
+        }
+        return ( // 左右一个满足即可
+          test(root.left, sum - root.val) || test(root.right, sum - root.val)
+        );
+      };
+
+      // 拓展， 求出满足上述条件的所有路径
+      var test = function (root, sum) {
+        let res = [];
+        let path = [];
+        const dfs = (root, targetSum) => {
+          // 如果节点为空则不需要再递归了
+          if (root == null) {
+            return;
+          }
+          // 把当前节点的值加入路径中
+          path.push(root.val);
+          // 由于路径中加入了当前节点，那目标值就少了
+          targetSum -= root.val;
+          if (root.left == null && root.right == null && targetSum == 0) {
+            // 如果到达叶子节点 并且目标值满足
+            res.push(path.slice());
+          }
+          dfs(root.left, targetSum);
+          dfs(root.right, targetSum);
+          // 左右子节点都递归完了，把当前节点从路径中删除，可走下一条路径
+          path.pop();
+        };
+        dfs(root, targetSum);
+        return res;
+      };
+    </script>
+  </body>
+</html>

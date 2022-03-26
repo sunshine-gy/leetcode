@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+      <div id="div">
+        <ul id="ul"></ul>
+      </div>
     <script>
-        //删除链表中等于给定值 val 的所有节点。
-        var removeElements = function(head, val) {
-            let dummy = new ListNode(null);
-            dummy.next = head; // 这两步是设置虚拟节点，简化操作，处理链表时常用
-            let pre = dummy;
-            while(pre.next !== null) {
-                if(pre.next.val === val) {
-                    let delNode = pre.next;
-                    pre.next = delNode.next;
-                    delNode.next = null
-                } else {
-                    pre = pre.next
-                }
-            }
-            return dummy.next
+      //删除链表中等于给定值 val 的所有节点。
+      var removeElements = function (head, val) {
+        let dummy = new ListNode(null);
+        dummy.next = head; // 这两步是设置虚拟节点，简化操作，处理链表时常用
+        let pre = dummy;
+        while (pre.next !== null) {
+          if (pre.next.val === val) {
+            let delNode = pre.next;
+            pre.next = delNode.next;
+            delNode.next = null;
+          } else {
+            pre = pre.next;
+          }
         }
+        return dummy.next;
+      };
     </script>
-</body>
+  </body>
 </html>

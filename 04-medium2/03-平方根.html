@@ -1,28 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        function sqrtNewton(n) {
-            if (n < 0) return NaN;
-            if (n === 0 || n === 1) return n
-            var val = n,
-                last;
-            do {
-                console.log(val, last)
-                last = val;
-                val = (val + n / val) / 2;
-            }
-            // 使用Number.EPSILON表示能够接受的最小误差范围
-            while (Math.abs(val - last) >= Number.EPSILON)
-            return val
+      // 牛顿迭代法
+      function sqrtNewton(n) {
+        if (n < 0) return NaN;
+        if (n === 0 || n === 1) return n;
+        var val = n,
+          last;
+        do {
+          console.log(val, last);
+          last = val;
+          val = (val + n / val) / 2;
+        } while (
+          // 使用Number.EPSILON表示能够接受的最小误差范围(Math.pow(2,-52))
+          Math.abs(val - last) >= Number.EPSILON
+        );
+        return val;
+      }
+      console.log(sqrtNewton(9));
+      console.log(123 + {});
+
+      // 二分法
+      var test = function(n) {
+        if (n < 0) return NaN;
+        if (n === 0 || n === 1) return n;
+        let low = 0;
+        let high = n;
+        let mid = (low + high) / 2;
+        let lastMid;
+        do {
+          if(Math.pow(mid,2) > n) {
+            high = mid
+          }
+          else if(Math.pow(mid,2) < n) {
+            low = mid
+          } else {
+            return mid
+          }
+          lastMid = mid;
+          mid = (low + high) / 2
         }
-        console.log(sqrtNewton(9));
+        while(Math.abs(mid - lastMid) >= Number.EPSILON)
+        return mid
+      }
+      console.log(test(10));
     </script>
-</body>
+  </body>
 </html>

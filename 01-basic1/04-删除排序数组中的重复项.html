@@ -24,7 +24,7 @@
                     nums[slowP] = nums[fastP];
                 }
             }
-            return slowP + 1;
+            return nums.slice(0,slowP+1);
         }
         console.log(removeDuplicates([1,4,2,3,4,5,5,7,7,8,4]));
 
