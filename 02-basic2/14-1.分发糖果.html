@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // n 个孩子站成一排。给你一个整数数组 ratings 表示每个孩子的评分。
+        // 每个孩子至少分配到 1 个糖果。
+        // 相邻两个孩子评分更高的孩子会获得更多的糖果。
+        // 题解。先给每个孩子一个糖果，依次从两边遍历ratings，发现评分高的就加一个糖果
+        var test = function(ratings) {
+            let nums = new Array(ratings.length).fill(1);
+            for(let i = 1; i < ratings.length; i++) {  // 从左边遍历
+                if(ratings[i] > ratings[i - 1]) {
+                    nums[i] = nums[i - 1] + 1
+                }
+            }
+            for(let j = ratings.length - 1; j > 0; j++) { // 从右边遍历
+                // 左边大于右边并且左边已有数量不大于右边
+                if(ratings[j - 1] > ratings[j] && nums[j - 1] <= nums[j]) { 
+                    nums[j -1] = nums[j] + 1
+                }
+            }
+            return nums.reduce((preValue, item) => item + preValue, 0)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 题意：将二叉树展开为链表，采用前序遍历的方式展开
+      // 题解：先将树的左右两边拉平，再将左子树作为右子树，右子树接到当前右子树的末端
+      var flatten = function (root) {
+        if (root == null) return;
+
+        flatten(root.left);
+        flatten(root.right);
+
+        // 1、左右子树已经被拉平成一条链表
+        // 先用两个变量把原先的左右子树保存起来
+        let left = root.left;
+        let right = root.right;
+
+        // 2、将左子树作为右子树
+        root.left = null;
+        root.right = left;
+
+        // 3、将原先的右子树接到当前右子树的末端
+        while (root.right != null) {
+          root = root.right;
+        }
+        root.right = right;
+      };
+    </script>
+  </body>
+</html>
