@@ -11,7 +11,7 @@
       // 求是否存在一条路径从根节点到子叶节点的的路径和等于目标值
       var test = function (root, sum) {
         if (!root) return null;
-        if (root.left == null && root.right == null) { // 
+        if (root.left == null && root.right == null) { // 走到了左右叶子节点的末端
           return sum - root.val == 0;
         }
         return ( // 左右一个满足即可

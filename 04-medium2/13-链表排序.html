@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 题解： 先利用快指针走两步，慢指针走一步，用preSlow记录slow的前一个状态，当快指针走完后，满指针刚好到达中点，
+        // 即将该链断成两链，再递归调用一直二分；最后再调用merge函数将两个有序链表合并。
+        var sortList = function(head) {
+            if(!head || !head.next) return head;
+            let slow = head;
+            let fast = head;
+            let preSlow = null;
+            while(fast && fast.next) { // 快指针走两步，慢指针走一步
+                preSlow = slow;        // preSlow记录慢指针的前一个状态
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+            preSlow.next = null;      // 将链分为两半，后半段以slow开始的链
+            let l = sortList(head); // 这两步是将递归压栈压到链只有一个结点
+            let r = sortList(slow);
+            return merge(l, r)      // 然后在递归出栈的时候合并
+        }
+        function merge(l1, l2) {    // 做的就是合并两个有序链表
+            let dummy = new ListNode(0);
+            let pre = dummy;
+            while(l1 && l2) {
+                if(l1.val < l2.val) {
+                    pre.next = l1;
+                    l1 = l1.next
+                } else {
+                    pre.next = l2;
+                    l2 = l2.next
+                }
+                pre = pre.next
+            }
+            if(l1) pre.next = l1;
+            if(l2) pre.next = l2;
+            return dummy.next;
+        }
+    </script>
+</body>
+</html>

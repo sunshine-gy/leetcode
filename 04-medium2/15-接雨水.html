@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        //维护首尾双指针，每次遍历更新左右两边的最大值
+        //对于某一列，能接到的雨水取决于 min(左边最大值，右边最大值)
+        //遍历时，根据左右两边的最大值，进行接雨水，直到左右指针相遇遍历完即可
+      var test = function (height) {
+        let count = 0;
+        let [left, right] = [0, height.length - 1];
+        let [leftMax, rightMax] = [0, 0];
+        while (left < right) {
+          leftMax = Math.max(leftMax, height[left]);
+          rightMax = Math.max(rightMax, height[right]);
+          if (leftMax < rightMax) {
+            count += leftMax - height[left++];
+          } else {
+            count += rightMax - height[right--];
+          }
+        }
+        return count;
+      };
+    </script>
+  </body>
+</html>
