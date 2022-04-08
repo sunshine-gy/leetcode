@@ -8,8 +8,8 @@
   </head>
   <body>
     <script>
-       // 题意： k个一组的将链表反转，比如 k = 2， 则链表两两反转，剩下的原样连接
-       // 题解： 将每个区间的链表反转，再通过递归拼接起来
+      // 题意： k个一组的将链表反转，比如 k = 2， 则链表两两反转，剩下的原样连接
+      // 题解： 将每个区间的链表反转，再通过递归拼接起来
       var reverseKGroup = function (head, k) {
         if (head == null) {
           return head;
@@ -29,7 +29,7 @@
         a.next = reverseKGroup(b, k);
         return newHead;
       };
-     // 反转区间 [a, b) 的元素，注意是左闭右开
+      // 反转区间 [a, b) 的元素，注意是左闭右开
       const reverse = (a, b) => {
         let pre, cur, nxt;
         cur = a;

@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        // 题解： 拿短的那个字符串在长字符串中找最长的公共子串，找不到换下一位
-        var test = function(str1, str2) {
-            if(str1.length > str2.length) {
-                [str1, str2] = [str2, str1];
-            }
-            let len = str1.length;
-            let res;
-            for(let j = len; j > 0; j--) {
-                for(i = 0; i <= len - j; i++) {
-                    res = str1.substr(i, j);   // substr 的第二个参数是截取的个数而不是下标值
-                    if(str2.includes(res)) return res
-                }
-            }
-            return ''
+      // 题解： 拿短的那个字符串在长字符串中找最长的公共子串，找不到换下一位
+      var test = function (str1, str2) {
+        if (str1.length > str2.length) {
+          [str1, str2] = [str2, str1];
         }
-        console.log(test('iiiccdef', 'abccdef'));
+        let len = str1.length;
+        let res;
+        for (let j = len; j > 0; j--) {
+          for (i = 0; i <= len - j; i++) {
+            res = str1.substr(i, j); // substr 的第二个参数是截取的个数而不是下标值
+            if (str2.includes(res)) return res;
+          }
+        }
+        return "";
+      };
+      console.log(test("iiiccdef", "abccdef"));
     </script>
-</body>
+  </body>
 </html>

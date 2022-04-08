@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        var sort = function(head) {
-            let dummy = new ListNode('');
-            dummy.next = head;
-            let pre = dummy;
-            while(pre && pre.next) {
-                if(pre.val == pre.next.val) {
-                    pre.next = pre.next.next
-                } else {
-                    pre = pre.next
-                }
-            }
-            return dummy.next
+      var sort = function (head) {
+        let dummy = new ListNode("");
+        dummy.next = head;
+        let pre = dummy;
+        while (pre && pre.next) {
+          if (pre.val == pre.next.val) {
+            pre.next = pre.next.next;
+          } else {
+            pre = pre.next;
+          }
         }
+        return dummy.next;
+      };
 
-        // 扩展：删除排序链表中的重复过的元素，即重复的元素删干净
-        var sort1 = function(head) {
-            let dummy = new ListNode(-1);
-            dummy.next = head;
-            let pre = dummy;
-            while(pre.next && pre.next.next) {
-                if(pre.next.val == pre.next.next.val) {
-                    let cur = pre.next.val;             // 保存重复元素的值
-                    while(pre.next && pre.next.val == cur) { // 当该值存在并且等于重复元素的值时，进行删除
-                        pre.next = pre.next.next
-                    }
-                } else {
-                    pre = pre.next
-                }
+      // 扩展：删除排序链表中的重复过的元素，即重复的元素删干净
+      var sort1 = function (head) {
+        let dummy = new ListNode(-1);
+        dummy.next = head;
+        let pre = dummy;
+        while (pre.next && pre.next.next) {
+          if (pre.next.val == pre.next.next.val) {
+            let cur = pre.next.val; // 保存重复元素的值
+            while (pre.next && pre.next.val == cur) {
+              // 当该值存在并且等于重复元素的值时，进行删除
+              pre.next = pre.next.next;
             }
-            return dummy.next
+          } else {
+            pre = pre.next;
+          }
         }
+        return dummy.next;
+      };
     </script>
-</body>
+  </body>
 </html>

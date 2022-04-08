@@ -9,6 +9,7 @@
 <body>
     <script>
         var threeSum = function(nums, target) {
+            nums = nums.sort((a,b) => a - b);
             let len = nums.length;
             if(len === 3) return getSum(nums);
             let min = Infinity;
