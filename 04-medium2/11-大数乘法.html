@@ -15,8 +15,8 @@
         var l1 = num1.length,
           l2 = num2.length,
           p = new Array(l1 + l2).fill(0);
-        for (var i = l1 - 1; i >= 0; i-- ) {
-          for (var j = l2 - 1; j >= 0; j-- ) {
+        for (var i = l1 - 1; i >= 0; i--) {
+          for (var j = l2 - 1; j >= 0; j--) {
             var tmp = num1[i] * num2[j] + p[i + j + 1];
             p[i + j + 1] = tmp % 10;
             p[i + j] += 0 | (tmp / 10);
@@ -27,7 +27,7 @@
         }
         return p.join("");
       };
-      console.log(multiply('2','3'));
+      console.log(multiply("2", "3"));
     </script>
   </body>
 </html>
