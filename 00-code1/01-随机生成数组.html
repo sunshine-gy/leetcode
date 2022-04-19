@@ -8,6 +8,7 @@
   </head>
   <body>
     <script>
+      // 方法一
       function randArray(len, min, max) {
         return Array.from(
           { length: len },
@@ -15,6 +16,8 @@
         );
       }
       console.log(randArray(10, 1, 10));
+
+      // 方法二
       function randArray2(len, min, max) {
         return new Array(len)
           .fill(1)

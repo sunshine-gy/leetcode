@@ -31,9 +31,9 @@
 
       // reduce 的实现
       // 放到原型链上
-      Array.prototype.myReduce = function (callback, initialValue) {
+      Array.prototype.myReduce = function (fn, initialValue) {
         // 没有传入归并函数将报错
-        if (typeof callback !== "function") {
+        if (typeof fn !== "function") {
           throw Error("请传入归并函数");
         }
 
@@ -43,7 +43,7 @@
         let pre = initialValue ? initialValue : 0;
 
         for (let i = 0; i < array.length; i++) {
-          pre = callback(pre, array[i], i, array);
+          pre = fn(pre, array[i], i, array);
         }
 
         return pre;

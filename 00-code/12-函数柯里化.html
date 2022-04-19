@@ -32,6 +32,12 @@
     //   简单方法
       const sum = x => y => z => x + y + z;
       console.log(sum(1)(2)(3));
+
+      // 将类数组arguments转换成真正数组的方法有：
+      // 1. Array.prototype.slice.call(arguments)
+      // 2. Array.from(arguments)
+      // 3. [...arguments]
+      // 4. Array.prototype.concat.apply([], arguments)
     </script>
   </body>
 </html>
