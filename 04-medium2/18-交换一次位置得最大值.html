@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var maximumSwap = function (num) {
+        const str = String(num);
+        const numArr = str.split("");
+        let res = str.split("");
+        // 排序
+        res.sort((a, b) => b - a);
+        for (let i = 0; i < str.length; i++) {
+          // 排序后前面的最大值的值与原字符串的值不相等 即证明有优化空间
+          if (str[i] !== res[i]) {
+            // 找到最大值的位置交换目前不等于最大值的数字
+            // 最大值的位置从后面开始找 替换后比较大
+            let index = str.lastIndexOf(res[i]);
+            //把当前最小值替换最大值
+            //把当前最小值替换最大值
+            numArr.splice(i, 1, res[i]);
+            numArr.splice(index, 1, str[i]);
+            return Number(numArr.join(""));
+          }
+        }
+        return num;
+      };
+      console.log(maximumSwap(554132));
+    </script>
+  </body>
+</html>
