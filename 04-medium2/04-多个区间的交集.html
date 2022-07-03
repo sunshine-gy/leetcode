@@ -70,7 +70,8 @@
         }
       }
 
-      function test(nums) {
+        // [5,2],[4,9],[3,6] => [4,5]
+        function test(nums) {
         if(!nums.length) return null;
         if(nums.length == 1) return nums[0];
         let maxVal = Math.max(nums[0][0], nums[0][1]);
